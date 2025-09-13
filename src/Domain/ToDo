@@ -1,0 +1,36 @@
+  // Add ModerationResult
+   public class ModerationResult
+   {
+       public bool IsApproved { get; set; }
+       public string? Reason { get; set; }
+       public double ConfidenceScore { get; set; }
+   }
+   
+   // Add FollowResult
+   public class FollowResult
+   {
+       public bool IsSuccessful { get; set; }
+       public FollowStatus Status { get; set; }
+       public string? Message { get; set; }
+   }
+
+   // Add Aggregate Root Pattern
+   public abstract class AggregateRoot : BaseEntity
+   {
+       private readonly List<IDomainEvent> _domainEvents = new();
+       
+       public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+       
+       protected void AddDomainEvent(IDomainEvent domainEvent)
+       {
+           _domainEvents.Add(domainEvent);
+       }
+       
+       public void ClearDomainEvents()
+       {
+           _domainEvents.Clear();
+       }
+   }
+
+   //Add validation logic directly in entities
+   //Implement domain methods for complex operations

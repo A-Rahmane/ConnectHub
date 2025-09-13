@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Common;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -9,10 +10,10 @@ namespace Domain.Entities
 
         [Required]
         [StringLength(100)]
-        public string DisplayName { get; set; } = string.Empty;
+        public DisplayName DisplayName { get; set; } = string.Empty;
 
         [StringLength(500)]
-        public string? Bio { get; set; }
+        public Bio? Bio { get; set; }
 
         [StringLength(255)]
         public string? AvatarUrl { get; set; }
