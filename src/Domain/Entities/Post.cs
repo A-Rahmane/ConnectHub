@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Common;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -9,7 +10,7 @@ namespace Domain.Entities
 
         [Required]
         [StringLength(2000)]
-        public string Content { get; set; } = string.Empty;
+        public PostContent Content { get; set; } = null;
 
         public bool IsPublished { get; set; } = true;
         public int ViewCount { get; set; } = 0;

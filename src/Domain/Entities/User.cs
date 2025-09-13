@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Common;
 using Domain.Enums;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -8,15 +9,15 @@ namespace Domain.Entities
     {
         [Required]
         [StringLength(50)]
-        public string Username { get; set; } = string.Empty;
+        public Username Username { get; set; } = null;
 
         [Required]
         [EmailAddress]
         [StringLength(100)]
-        public string Email { get; set; } = string.Empty;
+        public Email Email { get; set; } = null;
 
         [Required]
-        public string PasswordHash { get; set; } = string.Empty;
+        public Password Password { get; set; } = null;
 
         public string? SecurityStamp { get; set; }
         public DateTime? LastLoginAt { get; set; }
