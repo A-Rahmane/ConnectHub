@@ -1,22 +1,19 @@
-1. Complete Missing Value Objects and Domain Models  
-  // Add ModerationResult
-   public class ModerationResult
-   {
-       public bool IsApproved { get; set; }
-       public string? Reason { get; set; }
-       public double ConfidenceScore { get; set; }
-   }
+1. Create Missing Domain Models (Domain Responsibility)
+   - Create Domain/Models/ModerationResult.cs (domain model, not infrastructure)
+   - Create Domain/Models/FollowResult.cs (domain model, not infrastructure)
    
-   // Add FollowResult
-   public class FollowResult
-   {
-       public bool IsSuccessful { get; set; }
-       public FollowStatus Status { get; set; }
-       public string? Message { get; set; }
-   }
+2. Implement Rich Domain Entities (Domain Responsibility)
+   - Add business methods to User entity (ChangePassword validation, business rules)
+   - Add business methods to Post entity (AddHashtag, ValidateContent business rules)
+   - Add business methods to Profile entity (Follow validation, business rules)
+   - Entities should contain business logic, not just data
 
-2. Fix Domain Event Implementation
-   //Add domain event raising in entity methods (e.g., when creating posts, comments, follows)
+3. Complete Domain Event Definitions (Domain Responsibility)
+   - Add missing domain events: UserPasswordChangedEvent, PostLikedEvent, etc.
+   - Ensure entities raise events in business methods
+   - Events represent things that happened in the business domain
 
-   //Add validation logic directly in entities
-   //Implement domain methods for complex operations
+4. Fix Anemic Domain Model
+   - Move business validation from services into entities/value objects
+   - Add domain methods that enforce business invariants
+   - Ensure aggregates protect their consistency boundaries

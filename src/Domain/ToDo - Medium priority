@@ -1,15 +1,14 @@
-1. Improve Entity Relationships and Constraints
-	Add validation to prevent self-following in Follow entity
-	Add business rule validation for maximum hashtags per post
-	Add validation for media file limits per post
-	Implement proper cascade delete behaviors
+1. Complete Domain Exceptions (Domain Responsibility)
+   - Add more specific domain exceptions for business rule violations
+   - InvalidPasswordException, ContentTooLongException, etc.
+   - These represent domain rule violations
 
-2. Add Missing Domain Specifications
-	Create ISpecification<T> interface
-	Add specifications like ActiveUsersSpecification, PublishedPostsSpecification
-	Use specifications in repository interfaces for complex queries
+2. Enhance Business Rules Constants (Domain Responsibility)
+   - Ensure all business rules are captured in domain constants
+   - Move magic numbers from entities into BusinessRules class
+   - These represent core business policies
 
-3. Complete Soft Delete Implementation
-	Add DeletedBy tracking to all soft-deletable entities
-	Ensure ISoftDeletable is properly implemented across all relevant entities
-	Add domain methods for soft delete operations
+3. Add Domain Entity Factory Methods (Domain Responsibility)
+   - User.Create() factory methods with proper validation
+   - Post.Create() with hashtag extraction and validation
+   - Ensure entities are created in valid states

@@ -1,5 +1,22 @@
-1. Enhance Domain Services
-	Add comprehensive validation methods to IPasswordService
-	Enhance IContentModerationService with more specific moderation rules
-	Add IHashtagService for hashtag extraction and management
-	Add INotificationService for notification business logic
+1. Complete Domain Service Interfaces (Domain Responsibility)
+   - These are contracts for complex business rules spanning aggregates
+   - IContentModerationService interface is correct for domain
+   - IFollowService interface for complex follow business rules
+   - These define what the domain needs, implementation goes in Infrastructure
+
+2. Add Missing Domain Specifications (Domain Responsibility)
+   - Create ISpecification<T> interface for business rule specifications
+   - UserCanFollowSpecification (business rule)
+   - ValidPostContentSpecification (business rule)
+   - These encapsulate complex business rules
+
+3. Strengthen Value Objects (Domain Responsibility)
+   - Add missing business validation in existing value objects
+   - Ensure value objects encapsulate domain concepts properly
+   - Add invariants that protect domain rules
+
+4. Add Entity Business Methods (Domain Responsibility)
+   - User.ChangePassword() - with domain validation
+   - Post.AddComment() - with business rules
+   - Profile.Follow() - with business rules
+   - Follow.Accept(), Follow.Reject() - state transitions
