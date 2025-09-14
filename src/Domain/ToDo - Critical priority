@@ -1,19 +1,20 @@
-1. Create Missing Domain Models (Domain Responsibility)
-   - Create Domain/Models/ModerationResult.cs (domain model, not infrastructure)
-   - Create Domain/Models/FollowResult.cs (domain model, not infrastructure)
+1. Complete Rich Domain Entity Business Methods (Domain Responsibility)
+   - Add business methods to Comment entity:
+     * Comment.Create() factory method with validation and domain events
+     * Comment.UpdateContent() with business rules
+     * Comment.CanBeEditedBy() authorization logic
    
-2. Implement Rich Domain Entities (Domain Responsibility)
-   - Add business methods to User entity (ChangePassword validation, business rules)
-   - Add business methods to Post entity (AddHashtag, ValidateContent business rules)
-   - Add business methods to Profile entity (Follow validation, business rules)
-   - Entities should contain business logic, not just data
+   - Add state transition methods to Follow entity:
+     * Follow.Accept() - change status to Active, raise domain event
+     * Follow.Reject() - change status to Rejected, raise domain event  
+     * Follow.Block() - change status to Blocked, raise domain event
+   
+   - Enhance Like entity with factory methods:
+     * Like.CreatePostLike() with validation
+     * Like.CreateCommentLike() with validation
+     * Add business rule validation (prevent duplicate likes)
 
-3. Complete Domain Event Definitions (Domain Responsibility)
-   - Add missing domain events: UserPasswordChangedEvent, PostLikedEvent, etc.
-   - Ensure entities raise events in business methods
-   - Events represent things that happened in the business domain
-
-4. Fix Anemic Domain Model
-   - Move business validation from services into entities/value objects
-   - Add domain methods that enforce business invariants
-   - Ensure aggregates protect their consistency boundaries
+2. Add Missing Domain Events for New Business Methods
+   - CommentCreatedEvent (should be raised in Comment.Create())
+   - FollowAcceptedEvent, FollowRejectedEvent, FollowBlockedEvent
+   - Ensure all new business methods raise appropriate domain events
