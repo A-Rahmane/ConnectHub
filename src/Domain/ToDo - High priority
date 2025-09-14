@@ -1,0 +1,5 @@
+1. Enhance Domain Services
+	Add comprehensive validation methods to IPasswordService
+	Enhance IContentModerationService with more specific moderation rules
+	Add IHashtagService for hashtag extraction and management
+	Add INotificationService for notification business logic

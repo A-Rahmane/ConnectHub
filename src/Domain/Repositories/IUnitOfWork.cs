@@ -11,6 +11,10 @@
         IFollowRepository Follows { get; }
         IPostRepository Posts { get; }
         ICommentRepository Comments { get; }
-        // ... other repositories
+        IHashtagRepository Hashtags { get; }
+        ILikeRepository Likes { get; }
+        IMediaRepository Medias { get; }
+        INotificationRepository Notifications { get; }
+        IReportRepository Reports { get; }
     }
 }

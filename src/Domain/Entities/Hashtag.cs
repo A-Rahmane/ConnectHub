@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Common;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -7,7 +8,7 @@ namespace Domain.Entities
     {
         [Required]
         [StringLength(100)]
-        public string Name { get; set; } = string.Empty;
+        public HashtagName Name { get; set; } = string.Empty;
 
         [StringLength(200)]
         public string? Description { get; set; }

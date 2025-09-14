@@ -3,7 +3,7 @@ using Domain.Common;
 
 namespace Domain.Entities
 {
-    public class Comment : BaseEntity, IAuditableEntity, ISoftDeletable
+    public class Comment : AggregateRoot, IAuditableEntity, ISoftDeletable
     {
         public int PostId { get; set; }
         public int AuthorId { get; set; }

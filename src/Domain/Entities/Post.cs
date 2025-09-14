@@ -4,13 +4,13 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
-    public class Post : BaseEntity, IAuditableEntity, ISoftDeletable
+    public class Post : AggregateRoot, IAuditableEntity, ISoftDeletable
     {
         public int AuthorId { get; set; }
 
         [Required]
         [StringLength(2000)]
-        public PostContent Content { get; set; } = null;
+        public PostContent Content { get; set; } = new PostContent(string.Empty);
 
         public bool IsPublished { get; set; } = true;
         public int ViewCount { get; set; } = 0;

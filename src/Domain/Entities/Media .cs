@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Domain.Common;
 using Domain.Enums;
+using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
@@ -24,10 +25,9 @@ namespace Domain.Entities
         [StringLength(100)]
         public string MimeType { get; set; } = string.Empty;
 
-        public long FileSize { get; set; }
+        public FileSize FileSize { get; set; }
         public MediaType MediaType { get; set; }
-        public int Width { get; set; } = 0;
-        public int Height { get; set; } = 0;
+        public MediaDimensions Dimensions { get; set; }
         public int Duration { get; set; } = 0; // For videos/audio in seconds
 
         [StringLength(255)]

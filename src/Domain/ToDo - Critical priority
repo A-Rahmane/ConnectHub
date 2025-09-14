@@ -1,3 +1,4 @@
+1. Complete Missing Value Objects and Domain Models  
   // Add ModerationResult
    public class ModerationResult
    {
@@ -14,23 +15,8 @@
        public string? Message { get; set; }
    }
 
-   // Add Aggregate Root Pattern
-   public abstract class AggregateRoot : BaseEntity
-   {
-       private readonly List<IDomainEvent> _domainEvents = new();
-       
-       public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
-       
-       protected void AddDomainEvent(IDomainEvent domainEvent)
-       {
-           _domainEvents.Add(domainEvent);
-       }
-       
-       public void ClearDomainEvents()
-       {
-           _domainEvents.Clear();
-       }
-   }
+2. Fix Domain Event Implementation
+   //Add domain event raising in entity methods (e.g., when creating posts, comments, follows)
 
    //Add validation logic directly in entities
    //Implement domain methods for complex operations

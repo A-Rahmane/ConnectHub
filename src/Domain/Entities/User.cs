@@ -5,7 +5,7 @@ using Domain.ValueObjects;
 
 namespace Domain.Entities
 {
-    public class User : BaseEntity, IAuditableEntity, ISoftDeletable
+    public class User : AggregateRoot, IAuditableEntity, ISoftDeletable
     {
         [Required]
         [StringLength(50)]

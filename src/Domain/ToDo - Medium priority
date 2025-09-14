@@ -1,0 +1,15 @@
+1. Improve Entity Relationships and Constraints
+	Add validation to prevent self-following in Follow entity
+	Add business rule validation for maximum hashtags per post
+	Add validation for media file limits per post
+	Implement proper cascade delete behaviors
+
+2. Add Missing Domain Specifications
+	Create ISpecification<T> interface
+	Add specifications like ActiveUsersSpecification, PublishedPostsSpecification
+	Use specifications in repository interfaces for complex queries
+
+3. Complete Soft Delete Implementation
+	Add DeletedBy tracking to all soft-deletable entities
+	Ensure ISoftDeletable is properly implemented across all relevant entities
+	Add domain methods for soft delete operations
